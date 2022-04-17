@@ -13,6 +13,17 @@ const db = mysql.createConnection({
     database:"users",
 })
 
+app.get("/allData",(req,res)=>{
+    db.query("SELECT * FROM registartion",(err,result)=>{
+        if(err){
+            console.log('error')
+        }
+        else{
+            res.send(result);
+        }
+    })
+})
+
 app.post("/login",(req,res)=>{
     const name =req.body.name;
     const password = req.body.password;
