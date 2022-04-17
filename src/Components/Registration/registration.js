@@ -4,25 +4,30 @@ import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
 const Registration = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [cpassword, setCpassword] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [ShowErrorMsg, setShowErrorMsg] = useState(true);
   const history = useHistory();
   const register = () => {
-    Axios.post("http://localhost:3005/register", {
-      name: name,
-      password: password,
-      cpassword: cpassword,
-      email: email,
-    }).then(() => {
+    if (name == "" || email == "" || password == "" || cpassword == "") {
+      setIsButtonDisabled(false);
+      setShowErrorMsg(false);
+    } else {
+      Axios.post("http://localhost:3005/register", {
+        name: name,
+        password: password,
+        cpassword: cpassword,
+        email: email,
+      }).then(() => {
         history.push("/");
-    });
+      });
+    }
   };
 
-  const tryTocheck = (e) =>{
-      console.log('we are ween',e.target.value)
-  }
+  const tryTocheck = (e) => {};
   const loginPage = () => {
     history.push("/");
   };
@@ -41,10 +46,9 @@ const Registration = () => {
                 type="text"
                 placeholder="Name"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-              onChange={(e)=>{
+                onChange={(e) => {
                   setName(e.target.value);
-                  tryTocheck(e);
-              }}
+                }}
               />
             </div>
             <div className="mt-4">
@@ -55,8 +59,8 @@ const Registration = () => {
                 type="text"
                 placeholder="Email"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                onChange={(e)=>{
-                    setEmail(e.target.value);
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
                 required={true}
               />
@@ -67,8 +71,8 @@ const Registration = () => {
                 type="password"
                 placeholder="Password"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                onChange={(e)=>{
-                    setPassword(e.target.value);
+                onChange={(e) => {
+                  setPassword(e.target.value);
                 }}
               />
             </div>
@@ -78,15 +82,19 @@ const Registration = () => {
                 type="password"
                 placeholder="Password"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                onChange={(e)=>{
-                    setCpassword(e.target.value);
+                onChange={(e) => {
+                  setCpassword(e.target.value);
                 }}
-             />
+              />
             </div>
-            <span className="text-xs text-red-400" hidden={true}>Password must be same!</span>
+            <span className="text-xs text-red-400" hidden={ShowErrorMsg}>
+              Please Enter the all the records;
+            </span>
             <div className="flex">
-              <button className="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
-              onClick={register} disabled={false}
+              <button
+                className="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
+                onClick={register}
+                disabled={isButtonDisabled}
               >
                 Create Account
               </button>

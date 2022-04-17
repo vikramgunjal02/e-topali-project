@@ -14,13 +14,13 @@ function Admin() {
   });
 
   return (
-    <table className="border-collapse border border-slate-500 ...">
+    <table className="table-fixed">
       {/* <div>admin</div> */}
       <thead>
         <tr>
-          <th className="border border-slate-600 ...">Name</th>
-          <th className="border border-slate-600 ...">Email</th>
-          <th className="border border-slate-600 ...">Password</th>
+          <th className="w-1/2 px-4 py-2">Name</th>
+          <th className="w-1/2 px-4 py-2">Email</th>
+          <th className="w-1/2 px-4 py-2">Password</th>
         </tr>
       </thead>
       {empList.map((val, key) => {
@@ -28,9 +28,9 @@ function Admin() {
           <>
             <tbody>
               <tr>
-                <td className="border border-slate-700 ...">{val.name}</td>
-                <td className="border border-slate-700 ...">{val.email}</td>
-                <td className="border border-slate-700 ...">{val.password}</td>
+                <td className="border px-4 py-2">{val.name}</td>
+                <td className="border px-4 py-2">{val.email}</td>
+                <td className="border px-4 py-2">{val.password}</td>
               </tr>
             </tbody>
           </>
