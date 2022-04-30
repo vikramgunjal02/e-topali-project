@@ -18,9 +18,11 @@ function Admin() {
       {/* <div>admin</div> */}
       <thead>
         <tr>
-          <th className="w-1/2 px-4 py-2">Name</th>
-          <th className="w-1/2 px-4 py-2">Email</th>
-          <th className="w-1/2 px-4 py-2">Password</th>
+          <th className="w-1/2 px-4 py-2">Hospital Name</th>
+          <th className="w-1/2 px-4 py-2">Doctor Email</th>
+          <th className="w-1/2 px-4 py-2">Total Appointment</th>
+          <th className="w-1/2 px-4 py-2"> Total users</th>
+          <th className="w-1/2 px-4 py-2">Total Doctors</th>
         </tr>
       </thead>
       {empList.map((val, key) => {
@@ -31,6 +33,9 @@ function Admin() {
                 <td className="border px-4 py-2">{val.name}</td>
                 <td className="border px-4 py-2">{val.email}</td>
                 <td className="border px-4 py-2">{val.password}</td>
+                <td className="border px-4 py-2">{val.cpassword}</td>
+                <td className="border px-4 py-2">{val.company}</td>
+
               </tr>
             </tbody>
           </>

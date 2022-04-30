@@ -48,7 +48,7 @@ app.post("/register", (req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
     const cpassword = req.body.cpassword;
-    const company = req.body.company;
+    const company = req.body.appt;
     db.query(
         "INSERT INTO registartion(name, email, password, cpassword, company) VALUES (?,?,?,?,?)",
         [name,email, password,cpassword, company],(err, result) =>{

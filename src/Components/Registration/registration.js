@@ -8,6 +8,10 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
+  const [appt, setAppt] = useState("");
+  const [usr, setUsr] = useState("");
+
+
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [ShowErrorMsg, setShowErrorMsg] = useState(true);
   const history = useHistory();
@@ -21,6 +25,7 @@ const Registration = () => {
         password: password,
         cpassword: cpassword,
         email: email,
+        appt:appt,
       }).then(() => {
         history.push("/");
       });
@@ -35,12 +40,12 @@ const Registration = () => {
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
-          <h3 className="text-2xl font-bold text-center">Join us</h3>
+          <h3 className="text-2xl font-bold text-center">Doctor Registration</h3>
 
           <div className="mt-4">
             <div>
               <label className="block" for="Name">
-                Name
+                Hospital Name
               </label>
               <input
                 type="text"
@@ -53,7 +58,7 @@ const Registration = () => {
             </div>
             <div className="mt-4">
               <label className="block" for="email">
-                Email
+                Doctor Email
               </label>
               <input
                 type="text"
@@ -77,13 +82,25 @@ const Registration = () => {
               />
             </div>
             <div className="mt-4">
-              <label className="block">Confirm Password</label>
+              <label className="block"> Total Users</label>
               <input
-                type="password"
-                placeholder="Password"
+                type="text"
+                placeholder="Total Users"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                 onChange={(e) => {
                   setCpassword(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="mt-4">
+              <label className="block">Total Appointment</label>
+              <input
+                type="text"
+                placeholder="Total appointment"
+                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                onChange={(e) => {
+                  setAppt(e.target.value);
                 }}
               />
             </div>
